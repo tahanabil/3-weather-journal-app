@@ -12,7 +12,7 @@ const serverurl = 'http://localhost:3000';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getMonth() + 1 + '/' + d.getDate() + '/' + d.getFullYear();
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', () => {
@@ -67,7 +67,8 @@ const updateUI = async () => {
   try {
     const allData = await request.json();
     document.getElementById('date').innerHTML = allData.date;
-    document.getElementById('temp').innerHTML =  Math.round(allData.temp)+ 'degrees';;
+    document.getElementById('temp').innerHTML =
+      Math.round(allData.temp) + 'degrees';
     document.getElementById('content').innerHTML = allData.content;
   } catch (error) {
     console.log('error', error);
